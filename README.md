@@ -4,6 +4,17 @@
 
 <h1 align="center">A Monorepo using an Integrated Style.</h1>
 
+## Tools
+- Typescript
+- React
+- Vite
+- Webpack
+- Jest
+- Cypress
+- Node.js
+- Express
+- NX Workspace
+
 ## Structure
 ```
 /apps -> Apllications, BFFs and Services
