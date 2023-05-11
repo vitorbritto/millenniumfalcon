@@ -1,0 +1,63 @@
+{
+  "name": "obiwankenobi-bff",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/obiwankenobi-bff/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/obiwankenobi-bff",
+        "main": "apps/obiwankenobi-bff/src/main.ts",
+        "tsConfig": "apps/obiwankenobi-bff/tsconfig.app.json",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/obiwankenobi-bff/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "obiwankenobi-bff:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "obiwankenobi-bff:build:development"
+        },
+        "production": {
+          "buildTarget": "obiwankenobi-bff:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/obiwankenobi-bff/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/obiwankenobi-bff/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
